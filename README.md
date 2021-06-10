@@ -12,7 +12,7 @@
 [![Stack Overflow][stackoverflow-shield]][stackoverflow.com/users/11175375/adam]
 [![Leetcode][leetcode-shield]][eetcode.com/Hard_Code/]
 -->
-## Function arguments template 
+## Log
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
@@ -54,23 +54,18 @@
 
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
-C functions exchange information by means of parameters and arguments. The term parameter refers to any declaration within the parentheses following the function name in a function declaration or definition; the term argument refers to any expression within the parentheses of a function call.
+In a clear way, logging is just a fancy word to define a process of writing down everything you do.
 
-The following rules apply to parameters and arguments of C functions:
+There are several kinds of logging. You may log every operation of an application, log only when errors occur, or log crytical operations done by a user, especially if you want to have control of who’s doing what for audit purposes.
 
-Except for functions with variable-length argument lists, the number of arguments in a function call must be the same as the number of parameters in the function definition. This number can be zero.
-* The maximum number of arguments (and corresponding parameters) is 253 for a single function.
-* Arguments are separated by commas. However, the comma is not an operator in this context, and the arguments can be evaluated by the compiler in any order. There is, however, a sequence point before the actual call.
-* Arguments are passed by value; that is, when a function is called, the parameter receives a copy of the argument's value, not its address. This rule applies to all scalar values, structures, and unions passed as arguments.
-* Modifying a parameter does not modify the corresponding argument passed by the function call. However, because arguments can be addresses or pointers, a function can use addresses to modify the values of variables defined in the calling function.
-* In the old style, parameters that are not explicitly declared are assigned a default type of int .
-* The scope of function parameters is the function itself. Therefore, parameters of the same name in different functions are unrelated.
+Applications can log at a code level for debugging or at a user level for audits and phorbidden access register.
 
+Every operating system have routines or services running on the background with the task of taking notes of everything that is happening. This way a SysAdmin can detect security breaches, malfunctions etc.
 <!--Built with -->
 ### Built With
 
 <br>
-
+* [boost](https://boost.org/)
 * [cmake](https://cmake.org/)
 * [gnu](https://www.gnu.org/)
 
@@ -91,7 +86,7 @@ Except for functions with variable-length argument lists, the number of argument
 .
 ├── CMakeLists.txt
 ├── include
-│   └── FctArgs.h
+│   └── Log.h
 ├── README.md
 └── src
     └── Demo.cpp
@@ -102,7 +97,7 @@ Except for functions with variable-length argument lists, the number of argument
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is a sample code of how you may regroup a function arguments in a class.
+This is a sample code of how you may generate logs in your program.
 To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
@@ -113,15 +108,43 @@ This is an example of how to list things you need to use the software and how to
   sudo apt-get install cmake
   ```
 
+* [boost](https://stackoverflow.com/questions/8430332/uninstall-boost-and-install-another-version)
+  ```sh
+  cd /opt
+  mkdir boost
+  sudo apt-get -y install build-essential g++ python-dev autotools-dev libicu-dev libbz2-dev
+  wget http://downloads.sourceforge.net/project/boost/boost/1.76.0/boost_1_76_0.tar.gz
+  tar -zxvf boost_1_76_0.tar.gz
+  cd boost_1_76_0
+  # get the no of cpucores to make faster
+  cpuCores=`cat /proc/cpuinfo | grep "cpu cores" | uniq | awk '{print $NF}'`
+  echo "Available CPU cores: "$cpuCores
+  ./bootstrap.sh  # this will generate ./b2
+  sudo ./b2 --with=all -j $cpuCores install
+  ```
+ * Check boost version
+  ```sh
+  cat /usr/local/include/boost/version.hpp | grep "BOOST_LIB_VERSION"
+  ```
+ * Result
+  ```sh
+  // BOOST_LIB_VERSION must be defined to be the same as BOOST_VERSION
+  #define BOOST_LIB_VERSION "1_76_0"
+  ```
+  * Alternatively, install `boost`from `linux` package 
+  ```sh
+    sudo apt-get install libboost-all-dev
+  ```
+
 ### Installation
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/zoumson/FunctionArgumentsTemplate.git
+   git clone https://github.com/zoumson/Log.git
    ```
 2. Go to the project directory source
    ```sh
-   cd FunctionArgumentsTemplate
+   cd Log
    ```
 3. Create empty directories `build`,  and `bin`
    ```sh
@@ -141,20 +164,17 @@ This is an example of how to list things you need to use the software and how to
 2. Output
 
 ```
-Demo FctArgs template class
-void function2Args(za::FctArgs<int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >)
-First arguemnt: 100
-Second arguemnt: test 2 args
-void function3Args(za::FctArgs<int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, bool>)
-First arguemnt: 5
-Second arguemnt: test 3 args
-Third arguemnt: 1
+Demo Log manager using boost
+[2021-06-10 15:00:05]<6>: log1--->[1]...
+[2021-06-10 15:00:05]<3>: log1--->[2]...
+[2021-06-10 15:00:05]<4>: log2--->[2]...
 
 ```
+3. Two log files are generated `log1.txt` and `log2.txt`
 
-3. Back to the initial file structure configuration
+4. Back to the initial file structure configuration
    ```sh
-   rm -r bin build 
+   rm -r bin build *log*
    ```
 <!-- ROADMAP -->
 ## Roadmap
