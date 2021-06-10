@@ -147,9 +147,9 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    cd Log
    ```
-3. Create empty directories `build`,  and `bin`
+3. Create empty directories `build`,`bin`, and `log`
    ```sh
-   mkdir build &&  mkdir bin 
+   mkdir build &&  mkdir bin &&  mkdir log
    ```
 5. Generate the exectutable `demo` and move it to `bin`
    ```sh
@@ -174,7 +174,7 @@ Demo Log manager using boost
 
 4. Back to the initial file structure configuration
    ```sh
-   rm -r bin build *log*
+   rm -r bin build log
    ```
 <!-- ROADMAP -->
 ## Roadmap
