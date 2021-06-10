@@ -65,6 +65,7 @@ Every operating system have routines or services running on the background with 
 ### Built With
 
 <br>
+
 * [boost](https://boost.org/)
 * [cmake](https://cmake.org/)
 * [gnu](https://www.gnu.org/)
@@ -168,7 +169,6 @@ Demo Log manager using boost
 [2021-06-10 15:00:05]<6>: log1--->[1]...
 [2021-06-10 15:00:05]<3>: log1--->[2]...
 [2021-06-10 15:00:05]<4>: log2--->[2]...
-
 ```
 3. Two log files are generated `log1.txt` and `log2.txt`
 
@@ -206,7 +206,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Adama Zouma - <!-- [@your_twitter](https://twitter.com/your_username) -->- stargue49@gmail.com
 
-Project Link: [https://github.com/zoumson/FunctionArgumentsTemplate](https://github.com/zoumson/FunctionArgumentsTemplate.git)
+Project Link: [https://github.com/zoumson/Log](https://github.com/zoumson/Log.git)
 
 
 
