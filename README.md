@@ -13,6 +13,7 @@
 [![Leetcode][leetcode-shield]][eetcode.com/Hard_Code/]
 -->
 ## Log
+![log](https://user-images.githubusercontent.com/38358621/123391313-74884900-d5ce-11eb-954f-c20765b87e3d.png)
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
@@ -60,7 +61,6 @@ There are several kinds of logging. You may log every operation of an applicatio
 
 Applications can log at a code level for debugging or at a user level for audits and phorbidden access register.
 
-Every operating system have routines or services running on the background with the task of taking notes of everything that is happening. This way a SysAdmin can detect security breaches, malfunctions etc.
 <!--Built with -->
 ### Built With
 
